@@ -1,0 +1,30 @@
+body {
+    width: 100dvw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 14px; /* Adjust width for vertical scrollbar */
+    height: 12px; /* Adjust height for horizontal scrollbar */
+}
+
+/* Style the track (the background of the scrollbar) */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Light grey background */
+    border-radius: 10px;
+}
+
+/* Style the draggable thumb */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Gray color for the thumb */
+    border-radius: 10px;
+}
+
+/* Add hover effect on the thumb */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker gray when hovering over the thumb */
+}
