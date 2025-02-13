@@ -4,32 +4,29 @@ import { MainCard } from './cards/mainCard';
 import './App.css';
 
 function App() {
-  const [items, setItems] = useState([]);  // Holds all items from the API
-  const [page, setPage] = useState(1);     // For pagination
-  const [query, setQuery] = useState("");   // The search query
+  const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1); 
+  const [query, setQuery] = useState("");   
 
-  // Fetch listings data based on the page
   useEffect(() => {
     async function fetchListings() {
       const data = await getData(page);
       if (data && data.data) {
-        setItems(data.data);  // Set fetched data
+        setItems(data.data);  
       }
     }
     fetchListings();
   }, [page]);
 
-  // Handle search form submission
   const handleSearch = async (event) => {
     event.preventDefault();
     const searchTerm = event.target.searchInput.value.trim();
-    setQuery(searchTerm); // Update query state
+    setQuery(searchTerm); 
 
-    // Fetch search results using the API
     if (searchTerm) {
-      const result = await search(searchTerm); // Call the search function
+      const result = await search(searchTerm); 
       if (result) {
-        setItems(result.data); // Update items with search results
+        setItems(result.data); 
       }
     }
   };
@@ -39,6 +36,7 @@ function App() {
       {query && <h3>Showing results for: <strong>{query}</strong></h3>}
 
       <button onClick={() => setPage((prev) => Math.max(prev - 1, 1))}>Prev Page</button>
+      
       <button onClick={() => setPage((prev) => prev + 1)}>Next Page</button>
 
       <form onSubmit={handleSearch}>
